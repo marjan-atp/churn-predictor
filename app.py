@@ -50,13 +50,15 @@ if st.button("Predict Churn Risk", type="primary", use_container_width=True):
         'EstimatedSalary': [EstimatedSalary]
     })
 
-    prediction = model.predict(input_data)
     probability = model.predict_proba(input_data)[0][1] * 100
 
+    # Adjusted threshold to account for SMOTE overcorrection
+    threshold = 0.70  
+
     st.markdown("### Prediction Results:")
-    if prediction[0] == 1:
-        st.error(f"⚠️ **High Risk of Churn!**")
-        st.write(f"The model predicts a **{probability:.1f}%** probability that this customer will close their accounts.")
+    if probability / 100 >= threshold:
+        st.error("⚠️ **High Risk of Churn!**")
+        st.write(f"The model predicts a **{probability:.1f}%** probability of churn.")
     else:
-        st.success(f"✅ **Safe: Customer is likely to stay.**")
+        st.success("✅ **Safe: Customer is likely to stay.**")
         st.write(f"The model predicts only a **{probability:.1f}%** probability of churn.")
