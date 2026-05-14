@@ -5,6 +5,7 @@ import joblib
 st.set_page_config(page_title="Churn Predictor", page_icon="🏦", layout="centered")
 
 model = joblib.load('best_churn_model.pkl')
+scaler = joblib.load('my_scaler.pkl')
 
 st.title("🏦 Bank Customer Churn Predictor")
 st.write("Enter the customer's details below to predict if they will leave the bank.")
@@ -50,10 +51,12 @@ if st.button("Predict Churn Risk", type="primary", use_container_width=True):
         'EstimatedSalary': [EstimatedSalary]
     })
 
-    probability = model.predict_proba(input_data)[0][1] * 100
+    scaled_input = scaler.transform(raw_input_data)
+
+    probability = model.predict_proba(Scaled_input)[0][1] * 100
 
     # Adjusted threshold to account for SMOTE overcorrection
-    threshold = 0.86  
+    threshold = 0.55  
 
     st.markdown("### Prediction Results:")
     if probability / 100 >= threshold:
