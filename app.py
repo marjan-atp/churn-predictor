@@ -51,7 +51,7 @@ if st.button("Predict Churn Risk", type="primary", use_container_width=True):
         'EstimatedSalary': [EstimatedSalary]
     })
 
-    scaled_input = scaler.transform(raw_input_data)
+    scaled_input = scaler.transform(input_data)
 
     probability = model.predict_proba(Scaled_input)[0][1] * 100
 
