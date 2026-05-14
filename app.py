@@ -4,8 +4,8 @@ import joblib
 
 st.set_page_config(page_title="Churn Predictor", page_icon="🏦", layout="centered")
 
-model = joblib.load('best_churn_model.pkl')
-scaler = joblib.load('my_scaler.pkl')
+model = joblib.load('best_model(1).pkl')
+scaler = joblib.load('my_scaler(1).pkl')
 
 st.title("🏦 Bank Customer Churn Predictor")
 st.write("Enter the customer's details below to predict if they will leave the bank.")
