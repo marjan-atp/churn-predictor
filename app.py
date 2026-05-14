@@ -53,7 +53,7 @@ if st.button("Predict Churn Risk", type="primary", use_container_width=True):
 
     scaled_input = scaler.transform(input_data)
 
-    probability = model.predict_proba(Scaled_input)[0][1] * 100
+    probability = model.predict_proba(scaled_input)[0][1] * 100
 
     # Adjusted threshold to account for SMOTE overcorrection
     threshold = 0.55  
