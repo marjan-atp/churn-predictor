@@ -127,9 +127,9 @@ streamlit run app.py
 
 Application Screenshot
 
-"Bank Customer Churn Predictor" (assets/app_screenshot.png)
+["Bank Customer Churn Predictor" (assets/app_screenshot.png)
 churn-predictor//window.png
-
+](https://github.com/marjan-atp/churn-predictor/blob/main/window.png)
 
 🌐 Live Demo
 
